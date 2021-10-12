@@ -21,11 +21,14 @@ export const App = () => {
 
     const loadWeb3 = async () => {
         if (window.ethereum) {
+            // Check if ethereum browser
             window.web3 = new Web3(window.ethereum);
             await window.ethereum.enable();
         } else if (window.web3) {
+            // Check if ethereum extension
             window.web3 = new Web3(window.web3.currentProvider);
         } else {
+            // Give alert when no ethereum browser
             window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
         }
     }
